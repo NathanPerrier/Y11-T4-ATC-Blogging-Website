@@ -1,0 +1,569 @@
+{% extends 'template/main-template.html' %}
+{% block content %}
+<link type="text/css" href="{{ url_for('static', filename='css/blog/blog.css') }}" rel="stylesheet">
+<!-- Hero Start -->
+<div class="container-fluid p-0 m-0 hero bg-overlay-50">  <!--bg-overlay-40?-->
+    {% set image = blog.image|replace('frontend/static/', '') %}
+    <img class="bg-video" src="{{ url_for('static', filename=image) }}"> <!-- change to bg-video-2 to remove fixed position -->
+    <div class="container px-3 py-5 bg-img">
+        <div class="row g-5 mb-5">
+            <div class="col-lg-6 align-self-center text-center text-lg-start mb-lg-5">
+              <div class="pb-5">
+                <h1 class="display-4 text-white mb-3 animated slideInRight pt-lg-5" style="font-size:3rem">{{blog.title}}</h1>
+                <h4 class="text-white mb-2 animated slideInRight">Written By <a class="text-white" href="/account/{{ author.username }}">@{{ author.username }}</a></h4>
+                <p class="text-white animated slideInRight">{{blog.description}}</p>
+                <div class="my-3 animated slideInRight">
+                    <div class="LD-area text-white">
+                        <div class="LD-area-sub"> <!-- if the current user has like or disliked then change the colour of their choice (e.g. change the colour of the displaike icon to red if the user disliked it)-->
+                            <i class="fas fa-thumbs-up"></i> <span class="ms-1"> {{ likes }}</span>
+                        </div>
+                        <div class="text-dark ms-2" style="display:inline;border-right: 1.75px solid #ffffff;"></div>
+                        <div class="LD-area-sub">
+                            <i class="fas fa-thumbs-down ms-2"></i> <span class="ms-1"> {{ dislikes }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="wow fadeInUp" data-wow-delay="0.5s">
+                    <a href="#blog" class="btn btn-light py-sm-3 px-sm-5 rounded-pill me-3 animated slideInRight">Read More</a>
+                    {% if blog.user_id == user.id or user.admin %}
+                      <a href="/blog/{{blog.id}}/edit" class="btn btn-outline-light py-sm-3 px-sm-5 rounded-pill me-3 animated slideInRight">Edit</a>
+                    {% else %}
+                      {% if social|length == 0 %}
+                        <a onclick="followBtn({{blog.id}})" id="follow-btn-{{ blog.author_id }}" class="btn btn-light py-sm-3 px-sm-5 rounded-pill me-3 animated slideInRight">Follow</a>
+                      {% else %}
+                          {% set is_following = namespace(value=false) %}
+                          {% for follow in social %}
+                              {% if follow.follower_id == user.id and follow.following_id == author.id %} 
+                                {% set is_following.value = true %}
+                              {% endif %}
+                          {% endfor %}
+                          {% if is_following.value == true %} 
+                            <a onclick="followBtn({{blog.id}})" id="follow-btn-{{ blog.author_id }}" class="btn btn-outline-light py-sm-3 px-sm-5 rounded-pill me-3 animated slideInRight">Unfollow</a>
+                          {% else %}
+                            <a onclick="followBtn({{blog.id}})" id="follow-btn-{{ blog.author_id }}" class="btn btn-light py-sm-3 px-sm-5 rounded-pill me-3 animated slideInRight">Follow</a>
+                          {% endif %}
+                      {% endif %}
+                    {% endif %}
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Hero End -->
+
+<!-- Blog Start -->
+<div class="container-fluid py-5 bg-light" id="blog">
+    <div class="container">
+        <div class="text-center my-2">
+            <div class="tags-categories-wrapper mx-5 px-5">
+                <div class="btn btn-sm border rounded-pill text-primary px-3 mb-4 ms-1">Tags</div>
+                <div class="btn btn-sm border rounded-pill text-primary px-3 mb-4 ms-1">Categories</div>
+                <div class="btn btn-sm border rounded-pill text-primary px-3 mb-4 ms-1">Tags</div>
+                <div class="btn btn-sm border rounded-pill text-primary px-3 mb-4 ms-1">Categories</div>
+                <div class="btn btn-sm border rounded-pill text-primary px-3 mb-4 ms-1">Tags</div>
+                <div class="btn btn-sm border rounded-pill text-primary px-3 mb-4 ms-1">Categories</div>
+                <div class="btn btn-sm border rounded-pill text-primary px-3 mb-4 ms-1">...</div>   <!-- Do not remove! -->
+            </div>
+            <h2 class="fw-bold mb-1">{{blog.title}}</h2>
+            <small class="mb-3">Written By <a style="color:#555" href="/account/{{ author.username }}">@{{ author.username }}</a></small>
+        </div>
+        <div class="pb-3">
+            <hr style="margin-left:25%" width="50%">
+            <div class="mx-5">
+                <p class="text-muted my-2 mx-5 text-center"><i>{{blog.description}}</i></p> 
+            </div>
+            <hr style="margin-left:10%" width="80%">
+        </div>
+        <p class="text-block" style="font-size:1.1rem;">{{blog.content}}</p>
+    </div>
+</div>
+<!-- Blog End -->
+
+<!-- social Start -->
+<div class="container-fluid py-2 bg-secondary">
+    <div class="contaiiner py-4 px-2">
+        <div class="row">
+            <div class="col-lg-4 ms-4">
+                <!--<h3 class="text-white">Share this post</h3>-->
+                <div class="px-2" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+                    <h3 class="text-white mb-0">@{{author.username}}</h3>
+                    <div class="vr"><div class="text-dark ms-3 mb-0" style="display:inline;border-right: 2px solid #ffffff;"></div></div>
+                    {% if social|length == 0 %}
+                        <a onclick="followBtn({{blog.id}})" id="follow-btn-{{ blog.author_id }}" class="btn ms-3 btn-primary px-4 py-2">Follow</a>
+                    {% else %}
+                      {% set is_following = namespace(value=false) %}
+                      {% for follow in social %}
+                          {% if follow.follower_id == user.id and follow.following_id == author.id %} 
+                              {% set is_following.value = true %}
+                          {% endif %} 
+                      {% endfor %}
+                      {% if is_following.value == true %} 
+                          <a onclick="followBtn({{blog.id}})" id="follow-btn-{{ blog.author_id }}" class="btn ms-3 btn-primary-outline px-4 py-2">Unfollow</a>
+                      {% else %}
+                          <a onclick="followBtn({{blog.id}})" id="follow-btn-{{ blog.author_id }}" class="btn ms-3 btn-primary px-4 py-2">Follow</a>
+                      {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-lg-6 ms-4"></div>
+            <div class="col-lg-1">
+                <div class="LD-area text-white">
+                    {% set has_rating = namespace(value=false) %}
+                    <!-- if the current user has like or disliked then change the colour of their choice (e.g. change the colour of the displaike icon to red if the user disliked it)-->
+                    {% for rating in ratings %}
+                      {% if rating.user_id == user.id %}
+                        {% set has_rating.value = true %}
+                        <div class="LD-area-sub LD-hover-like">
+                          {% if rating.rating %} 
+                            <a onclick="likeBtn()"><i class="fa fa-thumbs-up active"></i></a>
+                          {% else %}
+                              <a onclick="likeBtn()"><i class="fa fa-thumbs-up"></i></a>
+                          {% endif %}
+                        </div>
+                        <div class="text-dark ms-2" style="display:inline;border-right: 1.75px solid #ffffff;"></div>
+                        <div class="LD-area-sub LD-hover-dislike">
+                          {% if rating.rating %}
+                            <a onclick="dislikeBtn()"><i class="fa fa-thumbs-down ms-2"></i></a>
+                          {% else %}
+                            <a onclick="dislikeBtn()"><i class="fa fa-thumbs-down ms-2 active"></i></a>
+                          {% endif %}
+                        </div>
+                      {% endif %}
+                    {% endfor %}
+                    {% if has_rating.value == false %}
+                      <div class="LD-area-sub LD-hover-like">
+                        <a onclick="likeBtn()"><i class="fa fa-thumbs-up"></i></a>
+                      </div>
+                      <div class="text-dark ms-2" style="display:inline;border-right: 1.75px solid #ffffff;"></div>
+                      <div class="LD-area-sub LD-hover-dislike">
+                        <a onclick="dislikeBtn()"><i class="fa fa-thumbs-down ms-2"></i></a>
+                      </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- social End -->
+
+<!-- Comments start -->
+<div class="container-fluid py-5 px-5 bg-white">
+  <div class="row">
+    <div class="col">
+      <div class="d-flex flex-start">
+        {% if user.is_authenticated %}
+          {% if 'http' in user.avatar %}   
+            <img class="rounded-circle shadow-sm me-3"
+            src="{{ user.avatar }}" alt="avatar" width="52"
+            height="52" />
+          {% else %}
+            {% set avatar = user.avatar|replace('frontend/static/', '') %}
+            <img class="rounded-circle shadow-sm me-3"
+            src="{{ url_for('static', filename=avatar) }}" alt="avatar" width="52"
+            height="52" />
+          {% endif %}          
+        {% endif %}
+        <div class="flex-grow-1 flex-shrink-1">
+          <div class="d-flex justify-content-between align-items-center">
+            <p class="mb-1">
+              {% if user.is_authenticated %}
+                {{user.first_name}}<span class="small">- Comment</span>
+              {% else %}
+                <span class="small">Comment</span>
+              {% endif %}
+            </p>
+          </div>
+          <p class="small mb-0">
+            <textarea class="form-control" name="comment" id="comment" rows="3" required></textarea>
+            <a class="btn btn-outline-secondary px-4 py-2 mt-3" onclick="postComment()">Post</a>
+          </p>
+        </div>
+      </div>
+
+      {% for comment in comments %}
+          {% if comment not in related_comments %}
+            <div class="d-flex flex-start mt-4 bg-white">
+              {% set comment_author_id = comment.user_id %}
+              {% set comment_author = namespace(value=none) %}
+              {% for comment_author_ in comment_authors %}
+                  {% if comment_author_.id == comment_author_id %}
+                      {% set comment_author.value = comment_author_ %}
+                  {% endif %}
+              {% endfor %}
+              <a href="/account/{{comment_author.value.username}}">
+                {% if 'http' in comment_author.value.avatar %}   
+                  <img class="rounded-circle shadow-sm me-3"
+                  src="{{ comment_author.value.avatar }}" alt="avatar" width="52"
+                  height="52" />
+                {% else %}
+                  {% set avatar = comment_author.value.avatar|replace('frontend/static/', '') %}
+                  <img class="rounded-circle shadow-sm me-3"
+                  src="{{ url_for('static', filename=avatar) }}" alt="avatar" width="52"
+                  height="52" />
+                {% endif %}
+              </a>          
+              <div class="flex-grow-1 flex-shrink-1">
+                <div class="d-flex justify-content-between align-items-center">
+                  <p class="mb-1">
+                    {% set comment_timestamp = comment.timestamp %}
+                    {% set time_difference = current_time - comment_timestamp %}
+                    <span style="font-weight:bold">{{ comment_author.value.first_name}}</span> <span class="small">- {% if time_difference.days > 0 %}{{ comment_timestamp.strftime("%B %d, %Y") }}{% else %}{% if time_difference.seconds // 3600 == 0 %}Just now{% else %}{% if time_difference.seconds // 3600 == 1 %}{{ time_difference.seconds // 3600 }} hour ago{% else %}{{ time_difference.seconds // 3600 }} hours ago{% endif %}{% endif %}{% endif %}</span>
+                    {% if comment.user_id == user.id or user.admin %}
+                      <a onclick="toggleEditInput({{comment.id}})" class="link-muted"><i class="fas fa-pencil-alt ms-2"></i></a>
+                    {% endif %}
+                  </p>
+                  <a onclick="toggleReplyInput({{comment.id}})"><i class="fas fa-reply fa-xs"></i><span class="small"> reply</span></a>
+                </div>
+                <p class="mb-0">
+                  <div class="variable-content" id="comment-{{comment.id}}">
+                    {{ comment.comment }}
+                  </div>
+                  <div style="display:none" class="variable-input" id="comment-edit-{{comment.id}}">
+                    <textarea class="form-control" name="comment" id="comment-edit-input-{{comment.id}}" rows="3" required>{{ comment.comment }}</textarea>
+                    <div class="row">
+                      <div class="col-md-11">
+                        <a class="btn btn-outline-secondary px-4 py-2 mt-3" onclick="editComment({{comment.id}})">Edit</a>
+                        <a class="btn btn-outline-danger px-4 py-2 mt-3 ms-2" onclick="closeEditDiv({{comment.id}})">Cancel</a>
+                      </div>
+                      <div class="col-md-1">
+                        <a class="btn btn-danger px-4 py-2 mt-3" onclick="deleteComment({{comment.id}})">Delete</a>
+                      </div>
+                    </div>
+                  </div>
+                </p>
+                <div style="display:none" class="variable-input" id="reply-section-{{comment.id}}">
+                  <textarea class="form-control" name="comment" id="comment-reply-input-{{comment.id}}" rows="3" required></textarea>
+                  <div class="row">
+                    <div class="col-md-11">
+                      <a class="btn btn-outline-secondary px-4 py-2 mt-3" onclick="relpyToComment({{comment.id}})">Reply</a>
+                      <a class="btn btn-outline-danger px-4 py-2 mt-3 ms-2" onclick="closeReplyDiv({{comment.id}})">Cancel</a>
+                    </div>
+                  </div>
+                </div>
+                {% for related_comment in related_comments %}
+                  {% if related_comment.relates_to_id == comment.id %}
+                    {% set related_comment_author_id = related_comment.user_id %}
+                    {% set related_comment_author = namespace(value=none) %}
+                    {% for related_comment_author_ in comment_authors %}
+                        {% if related_comment_author_.id == related_comment_author_id %}
+                            {% set related_comment_author.value = related_comment_author_ %}
+                        {% endif %}
+                    {% endfor %}
+                    <div class="d-flex flex-start mt-4">
+                      <a href="/account/related_comment_author.value.username}}">
+                        {% if 'http' in related_comment_author.value.avatar %}   
+                          <img class="rounded-circle shadow-sm me-3"
+                          src="{{ related_comment_author.value.avatar }}" alt="avatar" width="52"
+                          height="52" />
+                        {% else %}
+                          {% set avatar = related_comment_author.value.avatar|replace('frontend/static/', '') %}
+                          <img class="rounded-circle shadow-sm me-3"
+                          src="{{ url_for('static', filename=avatar) }}" alt="avatar" width="52"
+                          height="52" />
+                        {% endif %}
+                      </a>        
+                      <div class="flex-grow-1 flex-shrink-1">
+                        <div>
+                          <div class="d-flex justify-content-between align-items-center">
+                            <p class="mb-1">
+                              {% set comment_timestamp = related_comment.timestamp %}
+                              {% set time_difference = current_time - comment_timestamp %}
+                              <span style="font-weight:bold">{{ related_comment_author.value.first_name}}</span> <span class="small">- {% if time_difference.days > 0 %}{{ comment_timestamp.strftime("%B %d, %Y") }}{% else %}{% if time_difference.seconds // 3600 == 0 %}Just now{% else %}{% if time_difference.seconds // 3600 == 1 %}{{ time_difference.seconds // 3600 }} hour ago{% else %}{{ time_difference.seconds // 3600 }} hours ago{% endif %}{% endif %}{% endif %}</span>
+                              {% if related_comment.user_id == user.id or user.admin %}
+                                <a onclick="toggleEditInput({{related_comment.id}})" class="link-muted"><i class="fas fa-pencil-alt ms-2"></i></a>
+                              {% endif %}
+                            </p>
+                          </div>
+                          <p class="small mb-0">
+                            <div class="variable-content" id="comment-{{related_comment.id}}">
+                              {{ related_comment.comment }}
+                            </div>
+                            <div style="display:none" class="variable-input" id="comment-edit-{{related_comment.id}}">
+                              <textarea class="form-control" name="comment" id="comment-related-edit-input-{{related_comment.id}}" rows="3" required>{{ related_comment.comment }}</textarea>
+                              <div class="row">
+                                <div class="col-md-11">
+                                  <a class="btn btn-outline-secondary px-4 py-2 mt-3" onclick="editRelatedComment({{related_comment.id}})">Edit</a>
+                                  <a class="btn btn-outline-danger px-4 py-2 mt-3 ms-2" onclick="closeEditDiv({{related_comment.id}})">Cancel</a>
+                                </div>
+                                <div class="col-md-1">
+                                  <a class="btn btn-danger px-4 py-2 mt-3" onclick="deleteComment({{related_comment.id}})">Delete</a>
+                                </div>
+                              </div>
+                            </div>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+                  </div>
+            </div>
+          {% endif %}
+        {% endfor %} 
+        </div>
+      </div> 
+      <nav class="pagination my-3 px-1 py-2 rounded-pill bg-light" aria-label="Comment pagination" style="display:flex;justify-content:space-between">
+        <div class="d-flex px-1">
+            {% if comments.has_previous %}
+                {% if comments.number == comments.paginator.page_range|min %}
+                    <a id="prev" class="btn btn-outline-primary rounded-pill me-2" href="{{ url_for('blog.blog_page', blog_id=blog.id, page=(comments.paginator.page_range|max)) }}" aria-label="Previous"><i class="fas fa-chevron-left"></i></a>
+                {% else %}
+                    <a id="prev" class="btn btn-outline-primary rounded-pill me-2" href="{{ url_for('blog.blog_page', blog_id=blog.id, page=(comments.number-1)) }}" aria-label="Previous"><i class="fas fa-chevron-left"></i></a>
+                {% endif %}
+            {% else %}
+                <a id="prev" class="btn btn-outline-primary rounded-pill me-2 disabled" aria-label="Previous"><i class="fas fa-chevron-left"></i></a>
+            {% endif %}
+            {% if comments.has_next %}
+                {% if comments.number == comments.paginator.page_range|max %}
+                    <a id="next" class="btn btn-outline-primary rounded-pill" href="{{ url_for('blog.blog_page', blog_id=blog.id, page=(comments.paginator.page_range|min)) }}" aria-label="Next"><i class="fas fa-chevron-right"></i></a>
+                {% else %}
+                    <a id="next" class="btn btn-outline-primary rounded-pill" href="{{ url_for('blog.blog_page', blog_id=blog.id, page=(comments.number+1)) }}" aria-label="Next"><i class="fas fa-chevron-right"></i></a>
+                {% endif %}
+            {% else %}
+                <a id="next" class="btn btn-outline-primary rounded-pill disabled" aria-label="Next"><i class="fas fa-chevron-right"></i></a>
+            {% endif %}
+        </div>
+        <div class="d-flex">
+          {% for page_num in comments.paginator.page_range %}
+              {% if comments.number == page_num %}
+                  <a class="btn btn-outline-primary rounded-pill me-2 active">{{ page_num }}</a>
+              {% else %}
+                  <a class="btn btn-outline-primary rounded-pill me-2" href="{{ url_for('blog.blog_page', blog_id=blog.id, page=page_num) }}">{{ page_num }}</a>
+              {% endif %}
+          {% endfor %}
+        </div>
+      </nav>
+    </div>
+  </div>
+</div>
+<!-- Comments end -->
+
+<script>
+    function link() {
+        var element = document.getElementById("home-link");
+        element.classList.add("active");
+        var nav = document.getElementById("navbar")
+        nav.classList.add("bg-overlay-50")
+    };
+    link();
+
+    function followBtn(blog_id) {
+      if ("{{user.is_authenticated}}" == 'True') {
+          fetch('/blog/'+blog_id+'/follow', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            })
+            .then(response => response.json())
+            .catch(error => console.error(error));
+            window.location.href = "/blog/{{blog.id}}";
+      } else {
+          window.location.href = "/login";
+      }
+    }
+
+    function likeBtn() {
+      if ("{{user.is_authenticated}}" == 'True') {
+          fetch('/blog/{{blog.id}}/like', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            })
+            .then(response => response.json())
+            .catch(error => console.error(error));
+            window.location.href = "/blog/{{blog.id}}";
+      } else {
+          window.location.href = "/login";
+      }
+    }
+
+    function dislikeBtn() {
+      if ("{{user.is_authenticated}}" == 'True') {
+          fetch('/blog/{{blog.id}}/dislike', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            })
+            .then(response => response.json())
+            .catch(error => console.error(error));
+            window.location.href = "/blog/{{blog.id}}";
+      } else {
+          window.location.href = "/login";
+      }
+    }
+
+    function postComment() {
+      if ("{{user.is_authenticated}}" == 'True') {
+        if (document.getElementById("comment").value == "") {
+          alert("Please enter a comment");
+          return;
+        } else {
+          var data = {
+            comment: document.getElementById("comment").value
+          }
+          fetch('/blog/{{blog.id}}/comment', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .catch(error => console.error(error));
+            window.location.href = "/blog/{{blog.id}}";
+        }
+      } else {
+          window.location.href = "/login";
+      }
+    }
+
+    function editComment(comment_id) {
+      if ("{{user.is_authenticated}}" == 'True') {
+        if (document.getElementById("comment-edit-input-"+comment_id).value == "") {
+          alert("Please enter a comment");
+          return;
+        } else {
+          var data = {
+            comment: document.getElementById("comment-edit-input-"+comment_id).value
+          }
+          fetch('/blog/{{blog.id}}/comment/'+comment_id+'/edit', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .catch(error => console.error(error));
+            window.location.href = "/blog/{{blog.id}}";
+        }
+      } else {
+          window.location.href = "/login";
+      }
+    }
+
+    function editRelatedComment(comment_id) {
+      if ("{{user.is_authenticated}}" == 'True') {
+        if (document.getElementById("comment-related-edit-input-"+comment_id).value == "") {
+          alert("Please enter a comment");
+          return;
+        } else {
+          var data = {
+            comment: document.getElementById("comment-related-edit-input-"+comment_id).value
+          }
+          fetch('/blog/{{blog.id}}/comment/'+comment_id+'/edit', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .catch(error => console.error(error));
+            window.location.href = "/blog/{{blog.id}}";
+        }
+      } else {
+          window.location.href = "/login";
+      }
+    }
+
+    function relpyToComment(comment_id) {
+      if ("{{user.is_authenticated}}" == 'True') {
+        if (document.getElementById("comment-reply-input-"+comment_id).value == "") {
+          alert("Please enter a comment");
+          return;
+        } else {
+          var data = {
+            comment: document.getElementById("comment-reply-input-"+comment_id).value
+          }
+          fetch('/blog/{{blog.id}}/comment/'+comment_id+'/reply', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .catch(error => console.error(error));
+            window.location.href = "/blog/{{blog.id}}";
+        }
+      } else {
+          window.location.href = "/login";
+      }
+    }
+
+    function deleteComment(comment_id) {
+      if ("{{user.is_authenticated}}" == 'True') {
+        var result = confirm("Are you sure you want to delete your comment?");
+        if (result) {
+          fetch('/blog/{{blog.id}}/comment/'+comment_id+'/delete', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            })
+            .then(response => response.json())
+            .catch(error => console.error(error));
+            window.location.href = "/blog/{{blog.id}}";
+        }
+      } else {
+        window.location.href = "/login";
+      }
+    }
+
+    function toggleReplyInput(comment_id) {
+      var inputDiv = document.getElementById("reply-section-"+comment_id);
+      
+      resetVariableDisplays();
+
+      if (inputDiv.style.display === "none") {
+        inputDiv.style.display = "block";
+      } else {
+        inputDiv.style.display = "none";
+      }
+    }
+
+    function toggleEditInput(comment_id) {
+      var inputDiv = document.getElementById("comment-edit-"+comment_id);
+      var commentDiv = document.getElementById("comment-"+comment_id);
+
+      resetVariableDisplays();
+
+      if (inputDiv.style.display === "none") {
+        inputDiv.style.display = "block";
+        commentDiv.style.display = "none";
+      } else {
+        inputDiv.style.display = "none";
+        commentDiv.style.display = "block";
+      }
+    }
+
+    function resetVariableDisplays() {
+      var variableInputs = document.getElementsByClassName("variable-input");
+      var variableContents = document.getElementsByClassName("variable-content");
+      for (var i = 0; i < variableInputs.length; i++) {
+        variableInputs[i].style.display = "none";
+      }
+      for (var i = 0; i < variableContents.length; i++) {
+        variableContents[i].style.display = "block";
+      }
+    }
+
+    function closeEditDiv(comment_id) {
+      var inputDiv = document.getElementById("comment-edit-"+comment_id);
+      var commentDiv = document.getElementById("comment-"+comment_id);
+      inputDiv.style.display = "none";
+      commentDiv.style.display = "block";
+      
+    }
+
+    function closeReplyDiv(comment_id) {
+      var inputDiv = document.getElementById("reply-section-"+comment_id);    
+      inputDiv.style.display = "none"; 
+    }
+</script>
+{% endblock %}

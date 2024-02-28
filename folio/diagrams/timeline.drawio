@@ -1,0 +1,103 @@
+<mxfile host="app.diagrams.net" modified="2023-10-08T05:09:12.633Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36 Edg/117.0.2045.43" etag="M3bkUriNsxWdz5wLVTVM" version="22.0.4" type="device">
+  <diagram name="Page-1" id="82e54ff1-d628-8f03-85c4-9753963a91cd">
+    <mxGraphModel dx="1002" dy="617" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" background="none" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="4ec97bd9e5d20128-1" value="" style="line;strokeWidth=2;html=1;fillColor=none;fontSize=28;fontColor=#004D99;strokeColor=#6E5102;" parent="1" vertex="1">
+          <mxGeometry x="40" y="400" width="2410" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="4ec97bd9e5d20128-5" value="Week 1" style="shape=offPageConnector;whiteSpace=wrap;html=1;fillColor=#7D5C02;fontSize=15;fontColor=#FFFFFF;size=0.5093750000000015;verticalAlign=top;strokeColor=none;" parent="1" vertex="1">
+          <mxGeometry x="120" y="340" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="4ec97bd9e5d20128-6" value="&lt;span&gt;Week 3&lt;/span&gt;" style="shape=offPageConnector;whiteSpace=wrap;html=1;fillColor=#7D5C02;fontSize=15;fontColor=#FFFFFF;size=0.5093750000000015;verticalAlign=top;strokeColor=none;" parent="1" vertex="1">
+          <mxGeometry x="573" y="340" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="4ec97bd9e5d20128-7" value="&lt;span&gt;Week 2&lt;/span&gt;" style="shape=offPageConnector;whiteSpace=wrap;html=1;fillColor=#7D5C02;fontSize=15;fontColor=#FFFFFF;size=0.4178571428571445;flipV=1;verticalAlign=bottom;strokeColor=none;spacingBottom=4;" parent="1" vertex="1">
+          <mxGeometry x="347" y="425" width="160" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="4ec97bd9e5d20128-9" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#CFA911;fontSize=28;fontColor=#004D99;strokeWidth=3;strokeColor=#997102;" parent="1" vertex="1">
+          <mxGeometry x="190" y="395" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="4ec97bd9e5d20128-10" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#CFA911;fontSize=28;fontColor=#004D99;strokeWidth=3;strokeColor=#997102;" parent="1" vertex="1">
+          <mxGeometry x="417" y="395" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="4ec97bd9e5d20128-11" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#CFA911;fontSize=28;fontColor=#004D99;strokeWidth=3;strokeColor=#997102;" parent="1" vertex="1">
+          <mxGeometry x="643" y="395" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="4ec97bd9e5d20128-13" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#CFA911;fontSize=28;fontColor=#004D99;strokeWidth=3;strokeColor=#997102;" parent="1" vertex="1">
+          <mxGeometry x="870" y="395" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="4ec97bd9e5d20128-14" value="&lt;h1&gt;Start Folio&lt;/h1&gt;&lt;p&gt;Start generating the folio. By the end of week one the mind-map, criteria, existing solutions and wireframe should be completed.&lt;/p&gt;" style="text;html=1;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;strokeColor=none;strokeWidth=3;fillColor=#E6E6E6;fontSize=13;fontColor=#000000;align=center;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="93" y="430" width="215" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="4ec97bd9e5d20128-16" value="&lt;h1&gt;More Folio&lt;/h1&gt;&lt;p&gt;By week 2 the site map, variable table, dataflow diagram, ERD, and pseudocode should be completed.&lt;/p&gt;" style="text;html=1;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;strokeColor=none;strokeWidth=3;fillColor=#E6E6E6;fontSize=13;fontColor=#000000;align=center;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="319" y="250" width="215" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="4ec97bd9e5d20128-17" value="&lt;h1&gt;Start Code&lt;/h1&gt;&lt;p&gt;Start generating the application. start generating the html pages, routes and backend functions.&lt;/p&gt;" style="text;html=1;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;strokeColor=none;strokeWidth=3;fillColor=#E6E6E6;fontSize=13;fontColor=#000000;align=center;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="545" y="430" width="215" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="4ec97bd9e5d20128-18" value="&lt;h1&gt;More Code&lt;/h1&gt;&lt;p&gt;continue working on the app. start integrating the database. start implementing the user login/logout/signup functions.&lt;/p&gt;" style="text;html=1;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;strokeColor=none;strokeWidth=3;fillColor=#E6E6E6;fontSize=13;fontColor=#000000;align=center;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="773" y="250" width="215" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="QhpHEeokmbAl7ScTPKaU-2" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#CFA911;fontSize=28;fontColor=#004D99;strokeWidth=3;strokeColor=#997102;" parent="1" vertex="1">
+          <mxGeometry x="1100" y="395" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="QhpHEeokmbAl7ScTPKaU-3" value="&lt;span&gt;Week 4&lt;/span&gt;" style="shape=offPageConnector;whiteSpace=wrap;html=1;fillColor=#7D5C02;fontSize=15;fontColor=#FFFFFF;size=0.4178571428571445;flipV=1;verticalAlign=bottom;strokeColor=none;spacingBottom=4;" parent="1" vertex="1">
+          <mxGeometry x="800.5" y="425" width="160" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="QhpHEeokmbAl7ScTPKaU-4" value="&lt;span&gt;Week 6&lt;/span&gt;" style="shape=offPageConnector;whiteSpace=wrap;html=1;fillColor=#7D5C02;fontSize=15;fontColor=#FFFFFF;size=0.5093750000000015;verticalAlign=top;strokeColor=none;" parent="1" vertex="1">
+          <mxGeometry x="1030" y="340" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="QhpHEeokmbAl7ScTPKaU-6" value="&lt;h1&gt;More Code&lt;/h1&gt;&lt;p&gt;Finalize the development of the necessary code by implementing the blogging system. Also implement the admin functionality.&lt;/p&gt;" style="text;html=1;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;strokeColor=none;strokeWidth=3;fillColor=#E6E6E6;fontSize=13;fontColor=#000000;align=center;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="1002.5" y="430" width="215" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="QhpHEeokmbAl7ScTPKaU-7" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#CFA911;fontSize=28;fontColor=#004D99;strokeWidth=3;strokeColor=#997102;" parent="1" vertex="1">
+          <mxGeometry x="1330" y="395" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="QhpHEeokmbAl7ScTPKaU-8" value="&lt;span&gt;Week 7&lt;/span&gt;" style="shape=offPageConnector;whiteSpace=wrap;html=1;fillColor=#7D5C02;fontSize=15;fontColor=#FFFFFF;size=0.4178571428571445;flipV=1;verticalAlign=bottom;strokeColor=none;spacingBottom=4;" parent="1" vertex="1">
+          <mxGeometry x="1260" y="425" width="160" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="QhpHEeokmbAl7ScTPKaU-10" value="&lt;h1&gt;Finish Code&lt;/h1&gt;&lt;p&gt;Implement additional functions discussed in the success criteria.&amp;nbsp;&lt;/p&gt;" style="text;html=1;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;strokeColor=none;strokeWidth=3;fillColor=#E6E6E6;fontSize=13;fontColor=#000000;align=center;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="1232.5" y="250" width="215" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="QhpHEeokmbAl7ScTPKaU-11" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#CFA911;fontSize=28;fontColor=#004D99;strokeWidth=3;strokeColor=#997102;" parent="1" vertex="1">
+          <mxGeometry x="1560" y="395" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="QhpHEeokmbAl7ScTPKaU-12" value="&lt;span&gt;Week 8 - Draft&lt;/span&gt;" style="shape=offPageConnector;whiteSpace=wrap;html=1;fillColor=#7D5C02;fontSize=15;fontColor=#FFFFFF;size=0.5093750000000015;verticalAlign=top;strokeColor=none;" parent="1" vertex="1">
+          <mxGeometry x="1490" y="340" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="QhpHEeokmbAl7ScTPKaU-13" value="&lt;h1&gt;Testing Code&lt;/h1&gt;&lt;p&gt;Test the generated application, fixing any bugs that may occur.&lt;/p&gt;" style="text;html=1;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;strokeColor=none;strokeWidth=3;fillColor=#E6E6E6;fontSize=13;fontColor=#000000;align=center;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="1462.5" y="430" width="215" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="QhpHEeokmbAl7ScTPKaU-15" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#CFA911;fontSize=28;fontColor=#004D99;strokeWidth=3;strokeColor=#997102;" parent="1" vertex="1">
+          <mxGeometry x="1790" y="395" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="QhpHEeokmbAl7ScTPKaU-16" value="&lt;span&gt;Week 9&lt;/span&gt;" style="shape=offPageConnector;whiteSpace=wrap;html=1;fillColor=#7D5C02;fontSize=15;fontColor=#FFFFFF;size=0.4178571428571445;flipV=1;verticalAlign=bottom;strokeColor=none;spacingBottom=4;" parent="1" vertex="1">
+          <mxGeometry x="1720" y="425" width="160" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="QhpHEeokmbAl7ScTPKaU-18" value="&lt;h1&gt;Continue Folio&lt;/h1&gt;&lt;p&gt;Continue the folio by adding draft feedback, and completing the generate section&amp;nbsp;&lt;/p&gt;" style="text;html=1;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;strokeColor=none;strokeWidth=3;fillColor=#E6E6E6;fontSize=13;fontColor=#000000;align=center;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="1692.5" y="250" width="215" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="QhpHEeokmbAl7ScTPKaU-20" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#CFA911;fontSize=28;fontColor=#004D99;strokeWidth=3;strokeColor=#997102;" parent="1" vertex="1">
+          <mxGeometry x="2020" y="395" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="QhpHEeokmbAl7ScTPKaU-21" value="&lt;span&gt;Week 10&lt;/span&gt;" style="shape=offPageConnector;whiteSpace=wrap;html=1;fillColor=#7D5C02;fontSize=15;fontColor=#FFFFFF;size=0.5093750000000015;verticalAlign=top;strokeColor=none;" parent="1" vertex="1">
+          <mxGeometry x="1950" y="340" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="QhpHEeokmbAl7ScTPKaU-22" value="&lt;h1&gt;Finish Folio&lt;/h1&gt;&lt;p&gt;Finish the folio by completing the evaluation section and fixing any grammatical or spelling errors.&lt;/p&gt;" style="text;html=1;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;strokeColor=none;strokeWidth=3;fillColor=#E6E6E6;fontSize=13;fontColor=#000000;align=center;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="1922.5" y="430" width="215" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="DHKpjwLulHqUdoPR05KK-1" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#CFA911;fontSize=28;fontColor=#004D99;strokeWidth=3;strokeColor=#997102;" vertex="1" parent="1">
+          <mxGeometry x="2247.5" y="395" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="DHKpjwLulHqUdoPR05KK-2" value="&lt;span&gt;Week 2 - Final&lt;/span&gt;" style="shape=offPageConnector;whiteSpace=wrap;html=1;fillColor=#7D5C02;fontSize=15;fontColor=#FFFFFF;size=0.4178571428571445;flipV=1;verticalAlign=bottom;strokeColor=none;spacingBottom=4;" vertex="1" parent="1">
+          <mxGeometry x="2177.5" y="425" width="160" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="DHKpjwLulHqUdoPR05KK-3" value="&lt;h1 style=&quot;line-height: 110%;&quot;&gt;Additional Features&lt;/h1&gt;&lt;p&gt;Add new features to the code, while testing thoroughly&amp;nbsp;&amp;nbsp;&lt;/p&gt;" style="text;html=1;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;strokeColor=none;strokeWidth=3;fillColor=#E6E6E6;fontSize=13;fontColor=#000000;align=center;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="2150" y="250" width="215" height="120" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
