@@ -22,7 +22,7 @@ import os
 
 import googlemaps
 
-gmaps = googlemaps.Client(key='AIzaSyAo7gc4hxFarWdZF4ArPGnGWh-vDrM2cdo')
+gmaps = googlemaps.Client(key='your-google-maps-api-key')
 
 login_manager = LoginManager()
 login_manager.login_view = 'main.login'
