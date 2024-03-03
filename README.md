@@ -58,10 +58,10 @@ The project is structured as follows:
 - `run.py`: The entry point to the application.
 
 
-#### Contributing
+### Contributing
 
 If you want to contribute to this project, please fork the repository, make your changes, and open a pull request. 
 
-##### License
+### License
 
-This project is licensed under the terms of the MIT license. See the [LICENSE](LICENSE.md) file for the full license text.
+This project is licensed under the terms of the MIT license. See the [LICENSE](LICENCE.md) file for the full license text.
