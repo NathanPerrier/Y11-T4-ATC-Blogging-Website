@@ -8,6 +8,7 @@ from flask_wtf import FlaskForm
 from flask.json import jsonify
 from socket import gethostname
 from datetime import datetime
+from decouple import config
 from functools import wraps
 import random, string
 import pandas as pd
@@ -22,7 +23,7 @@ import os
 
 import googlemaps
 
-gmaps = googlemaps.Client(key='your-google-maps-api-key')
+gmaps = googlemaps.Client(key=config('GOOGLE_API_KEY'))
 
 login_manager = LoginManager()
 login_manager.login_view = 'main.login'
