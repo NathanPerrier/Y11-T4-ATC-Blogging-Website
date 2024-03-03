@@ -8,7 +8,7 @@ def create_app():
     
     # Configure app
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
-    app.config['SECRET_KEY'] = random.randbytes(32)
+    app.config['SECRET_KEY'] = config('SECRET_KEY')
     app.config['BLOG_UPLOAD_FOLDER'] = 'frontend/static/images/user-images/blogs/'
     app.config['AVATAR_UPLOAD_FOLDER'] = 'frontend/static/images/user-images/avatars/'
     app.config['AI_UPLOAD_FOLDER'] = 'frontend/static/images/ai-images/blogs/'
