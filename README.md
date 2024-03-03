@@ -64,4 +64,4 @@ If you want to contribute to this project, please fork the repository, make your
 
 ##### License
 
-This project is licensed under the terms of the MIT license. See the [LICENSE](LICENCE) file for the full license text.
+This project is licensed under the terms of the MIT license. See the [LICENSE](LICENSE.md) file for the full license text.
