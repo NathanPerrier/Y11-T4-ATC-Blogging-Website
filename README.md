@@ -52,10 +52,10 @@ Follow these steps to set up and run the project:
 
 The project is structured as follows:
 
-`backend/`: Contains the backend Python code.
-`frontend/`: Contains the frontend HTML, CSS, and JavaScript code.
-`requirements.txt`: Lists the Python packages that the project depends on.
-`run.py`: The entry point to the application.
+- `backend/`: Contains the backend Python code.
+- `frontend/`: Contains the frontend HTML, CSS, and JavaScript code.
+- `requirements.txt`: Lists the Python packages that the project depends on.
+- `run.py`: The entry point to the application.
 
 
 #### Contributing
