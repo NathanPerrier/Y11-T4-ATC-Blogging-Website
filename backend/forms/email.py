@@ -2,8 +2,9 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.image import MIMEImage
+from decouple import config
 
-GMAIL_SECRET_KEY = 'gmail-secret-key'
+GMAIL_SECRET_KEY = config('GOOGLE_API_KEY')
 
 def create_email(name, recipient_email, subject, message):
     try:
