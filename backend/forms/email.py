@@ -3,7 +3,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.image import MIMEImage
 
-GMAIL_SECRET_KEY = 'tlwzdvpfotedwjdi'
+GMAIL_SECRET_KEY = 'gmail-secret-key'
 
 def create_email(name, recipient_email, subject, message):
     try:
