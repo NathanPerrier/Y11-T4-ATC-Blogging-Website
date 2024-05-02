@@ -40,6 +40,10 @@ Follow these steps to set up and run the project:
     OPENAI_API_KEY = 'your_api_key'
 
     GOOGLE_API_KEY = 'your_google_key'
+
+    GMAIL_SECRET_KEY = 'your_gmail_secret_key'
+
+    GMAIL_SENDER_EMAIL = 'your_gmail_for_sending_emails'
     ```
 
 5. Run the website using:
