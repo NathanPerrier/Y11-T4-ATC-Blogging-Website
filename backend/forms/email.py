@@ -59,7 +59,7 @@ class Email():
     def __init__(self):
         pass
         
-    def send_contact_us_emails(self, name, recipient_email, subject, message, admin_email=config(''):
+    def send_contact_us_emails(self, name, recipient_email, subject, message, admin_email=config('GMAIL_SENDER_EMAIL'):
         
         user_subject = 'Thanks ' + name + ' For Contacting Us!'
         user_message = create_email(name, recipient_email, user_subject, 'We will get back to you soon! If you have any more enquiries feel free to contat us again.')
@@ -67,6 +67,6 @@ class Email():
         
         admin_subject = 'Contact Us Message'
         admin_message = create_email(name, admin_email, admin_subject, 'Name: ' + name + '<br><br>Email: ' + recipient_email + '<br><br>Subject: ' + subject + '<br><br>Message: ' + message)
-        send_email(admin_email, 'nathanperrier138@gmail.com', admin_message)
+        send_email(admin_email, config('GMAIL_ADMIN_EMAIL'), admin_message)
 
 
