@@ -59,7 +59,7 @@ class Email():
     def __init__(self):
         pass
         
-    def send_contact_us_emails(self, name, recipient_email, subject, message, admin_email='contact.webgenieai@gmail.com'):
+    def send_contact_us_emails(self, name, recipient_email, subject, message, admin_email=config(''):
         
         user_subject = 'Thanks ' + name + ' For Contacting Us!'
         user_message = create_email(name, recipient_email, user_subject, 'We will get back to you soon! If you have any more enquiries feel free to contat us again.')
