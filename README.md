@@ -44,6 +44,8 @@ Follow these steps to set up and run the project:
     GMAIL_SECRET_KEY = 'your_gmail_secret_key'
 
     GMAIL_SENDER_EMAIL = 'your_gmail_for_sending_emails'
+
+    GMAIL_ADMIN_EMAIL = 'recipient_gmail_for_tickets'
     ```
 
 5. Run the website using:
